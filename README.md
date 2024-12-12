@@ -6,7 +6,34 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
 
 
 ## Étapes de réalisation
-
+### 1. Création du projet Spring Boot
+- Projet créé via [Spring Initializr].
+- Outils choisis : **Maven**.
+- Dépendances utilisées : **Spring Web**, **Spring Data JPA**, **H2 Database**, **Lombok**.
+### 2. Configuration
+- Port de l'application configuré sur **8082**(j'ai eu un soucis avec le port 8081) .
+- Fichier de configuration utilisé : `application.properties`.
+### 3. Modélisation des entités
+- **Classe `Dice`** : Simule un dé avec une méthode pour lancer un jet.
+- **Entité JPA `DiceRollLog`** :
+    - Champs : `id`, `diceCount`, `results`, `timestamp`.
+    - Stocke l’historique des lancés.
+    - ### 4. Gestion de la base de données
+- **Repository** :
+    - Interface `JpaRepository` créée pour gérer les interactions avec la base.
+    - Utilisation de la base **H2** pour le stockage en mémoire.
+### 5. Création des services
+- **Service `DiceService`** :
+    - Gère la logique métier : simulation des jets et sauvegarde des résultats.
+  ### 6. Création des contrôleurs REST
+- **Contrôleur `DiceController`** :
+    - Endpoint **`GET /rollDice`** : Lancer un seul dé.
+    - Endpoint **`GET /rollDices/{count}`** : Lancer plusieurs dés.
+    - Endpoint **`GET /diceLogs`** : Récupérer l’historique des lancés.
+  ## Technologies utilisées
+- **Spring Boot** (Framework principal)
+- **H2 Database** (Base de données en mémoire)
+- **Lombok** (Simplification du code)
 ### 1. Création du projet Spring Boot
 - Utilisez [Spring Initializr](https://start.spring.io/) pour créer le projet.
 - Choisissez la dernière version de Spring Boot disponible (LTS).
